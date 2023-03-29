@@ -9,7 +9,7 @@ const createForm = async function(req, res){
         }
 
         let obj = {}
-        let {FirstName, LastName, Email, Country, State, City, Gender, DateOfBirth, Age} = data
+        let {FirstName, LastName, Email, Country, State, City, Gender, DateOfBirth} = data
 
         if(!isValid(FirstName)){
             return res.status(400).send({status: false, message: "please provide valid First Name"})
@@ -71,12 +71,12 @@ const createForm = async function(req, res){
         if(!isValid(DateOfBirth)){
             return res.status(400).send({status: false, message: "please provide Date of Birth in proper format"})
         }
-        // if(!isValidDate.test(DateOfBirth)){
-        //     return res.status(400).send({status: false, message: "please provide valid Date of Birth"})
-        // }
+        if(!isValidDate.test(DateOfBirth)){
+            return res.status(400).send({status: false, message: "please provide valid Date of Birth"})
+        }
         obj.DateOfBirth = DateOfBirth
 
-        // obj.Age = Date.now - DateOfBirth
+        obj.Age = Date.now() - DateOfBirth
 
         const formData = await formModel.create(obj)
         return res.status(201).send({status:true, message: "form is created", data: formData})
