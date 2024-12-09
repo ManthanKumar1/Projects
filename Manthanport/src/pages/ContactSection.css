@@ -1,0 +1,54 @@
+.contact-section {
+  text-align: center; /* Centers the text horizontally */
+  padding: 20px;
+  max-width: 600px; /* You can adjust the max-width as needed */
+  margin: 0 auto;
+}
+
+.contact-heading {
+  color: #ff7f00;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.contact-email a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.contact-phone {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-link {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  color: #ff7f00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-heading {
+    font-size: 20px;
+  }
+
+  .contact-email a,
+  .contact-phone {
+    font-size: 16px;
+  }
+
+  .social-link {
+    font-size: 18px;
+  }
+}

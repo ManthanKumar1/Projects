@@ -1,0 +1,109 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-color: #1e1e1e;
+  color: white;
+  font-family: "Arial", sans-serif;
+}
+.home-container-two {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-color: #1e1e1e;
+  color: white;
+  font-family: "Arial", sans-serif;
+  width: 911px;
+}
+
+.content {
+  flex: 1;
+  max-width: 50%;
+  text-align: center;
+}
+
+.heading {
+  font-size: 3.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.explore-btn {
+  background-color: #ff5722;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #e64a19;
+}
+
+.sub-heading {
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bio {
+  font-size: 1.1em;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.image img {
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* Inter font */
+@font-face {
+  font-family: "Inter-Bold";
+  src: url("./assests/fonts/Inter_18pt-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+/* Rubik Bold */
+@font-face {
+  font-family: "Rubik-Bold";
+  src: url("./assests/fonts/Rubik-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+/* Rubik Regular */
+@font-face {
+  font-family: "Rubik-Regular";
+  src: url("./assests/fonts/Rubik-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+/* Rubik SemiBold */
+@font-face {
+  font-family: "Rubik-SemiBold";
+  src: url("./assests/fonts/Rubik-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+/* Syne Bold */
+@font-face {
+  font-family: "Syne-Bold";
+  src: url("./assests/fonts/Syne-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+/* Syne Regular */
+@font-face {
+  font-family: "Syne-Regular";
+  src: url("./assests/fonts/Syne-Regular.ttf") format("truetype");
+  font-weight: normal;
+}

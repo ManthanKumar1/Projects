@@ -1,0 +1,53 @@
+.ui-design-container {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.ui-design-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ui-design-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.ui-design-image {
+  flex: 1;
+  max-width: 600px;
+}
+
+.ui-design-preview {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.ui-design-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.ui-design-text h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #ccc;
+}
+
+.ui-design-text p,
+.ui-design-text ul {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #bbb;
+}
+
+.ui-design-text ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}

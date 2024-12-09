@@ -1,0 +1,46 @@
+.portfolio-container {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.portfolio-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.portfolio-item {
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.05);
+}
+
+.portfolio-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.portfolio-item-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-item-description {
+  font-size: 1rem;
+  color: #bbb;
+}

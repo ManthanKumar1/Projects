@@ -1,0 +1,53 @@
+.app-steps-container {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.app-steps-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.app-steps-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.app-steps-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.app-steps-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.app-steps-text ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.app-steps-text li {
+  margin-bottom: 1rem;
+}
+
+.app-steps-text strong {
+  color: #ddd;
+}
+
+.app-steps-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.app-steps-image img {
+  width: 100%;
+  border-radius: 8px;
+}
