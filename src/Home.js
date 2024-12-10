@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css"; // To add custom styling
-import profileImage from "../src/assests/profile.png";
 import ProjectHighlight from "./pages/ProjectHigh";
 import Portfolio from "./pages/Portfolio";
 import UIDesign from "./pages/UIDesign";
