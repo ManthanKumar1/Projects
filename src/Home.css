@@ -9,9 +9,9 @@
   font-family: "Arial", sans-serif;
 }
 .home-container-two {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
   align-items: center;
   padding: 50px;
   background-color: #1e1e1e;
@@ -27,13 +27,19 @@
 }
 
 .heading {
-  font-size: 3.5em;
+  font-size: 2.5em;
   font-weight: bold;
-  margin-bottom: 20px;
   text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: SyneBold;
+  margin-bottom: 0px;
 }
-
+.heading-two {
+  font-size: 5em;
+  font-weight: bold;
+  margin: 5px;
+  text-align: center;
+  font-family: SyneBold;
+}
 .explore-btn {
   background-color: #ff5722;
   color: white;
@@ -53,12 +59,16 @@
   font-size: 2em;
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family: SyneBold;
+}
+.bio p {
+  font-family: RubikRegular;
 }
 
 .bio {
   font-size: 1.1em;
   line-height: 1.6;
-  max-width: 400px;
+  /* max-width: 400px; */
 }
 
 .image img {
@@ -71,6 +81,25 @@
   font-family: "Inter-Bold";
   src: url("./assests/fonts/Inter_18pt-Bold.ttf") format("truetype");
   font-weight: bold;
+}
+@font-face {
+  font-family: RubikBold;
+  src: url("../public/Rubik-Bold.ttf");
+}
+.ultra {
+  font-family: RubikBold;
+}
+
+@font-face {
+  font-family: SyneBold;
+  src: url("./assests/fonts/Syne-Bold.ttf");
+  /* font-weight: bold; */
+}
+
+@font-face {
+  font-family: RubikRegular;
+  src: url("./assests/fonts/Rubik-Regular.ttf");
+  /* font-weight: bold; */
 }
 
 /* Rubik Bold */

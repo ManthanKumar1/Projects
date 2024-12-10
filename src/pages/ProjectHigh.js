@@ -1,16 +1,24 @@
 import React from "react";
 import "./Projecthiglis.css";
-import laptop from "../assests/laptop2.png";
+
+import laptop from "../assests/Sejal.mp4";
 const ProjectHighlight = () => {
   return (
     <section className="projects-section">
       <h2>My Projects Highlight</h2>
-      <button className="explore-more-button">Explore More</button>
       <div className="project-card">
-        <img src={laptop} alt="project" />
-        <h3>3D Environment and Character</h3>
+        {/* <img src={laptop} alt="project" className="theImage" /> */}
+        <video
+          src={laptop}
+          controls
+          className="project-video"
+          alt="3D Environment and Character Video"
+        >
+          Your browser does not support the video tag.
+        </video>
         <div className="projectbio">
           <p className="projectbio">
+            <h3>3D Environment and Character</h3>
             Choosing a fantasy world 3D environment with a Chinese theme and
             featuring a turtle as a central character allows a visually
             captivating and culturally rich experience that resonates with
@@ -21,7 +29,7 @@ const ProjectHighlight = () => {
             scenes, creating a sense of ancient beauty and spiritual depth.
             <b>2D and 3D Animations</b>.
           </p>
-          <p>
+          <p className="projectbio">
             The turtle, a revered symbol in Chinese culture representing
             longevity, wisdom, and protection, fits seamlessly into this world.
             Portraying the turtle as a 3D character in water allows for dynamic
