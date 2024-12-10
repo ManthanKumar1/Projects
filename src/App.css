@@ -64,6 +64,13 @@
   margin-top: 2rem;
 }
 
+.project-card img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
 .project-card h3 {
   font-size: 1.8rem;
   font-weight: bold;
@@ -82,11 +89,9 @@
 
 /* Rubik Bold */
 @font-face {
-  font-family: RubikBold;
-  src: url("../public/Rubik-Bold.ttf");
-}
-.ultra {
-  font-family: RubikBold;
+  font-family: "Rubik-Bold";
+  src: url("./assests/fonts/Rubik-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 /* Rubik Regular */

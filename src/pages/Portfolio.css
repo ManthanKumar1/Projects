@@ -7,24 +7,14 @@
 
 .portfolio-title {
   font-size: 2rem;
-  margin-bottom: 3.5rem;
-  font-family: SyneBold;
-  margin-top: 10rem;
+  margin-bottom: 1.5rem;
 }
 
 .portfolio-grid {
-  display: flex;
-  flex-direction: row;
-  /* width: 1000px; */
-  justify-content: space-evenly;
-}
-.portfolio_grid {
-  flex-direction: row;
-  display: flex;
-  margin-top: 50px;
-
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
 }
 
 .portfolio-item {
@@ -33,38 +23,6 @@
   border-radius: 8px;
   text-align: center;
   transition: transform 0.3s ease;
-  width: 500px;
-}
-
-.portfolio-item-two {
-  background-color: #222;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  width: 700px;
-}
-.portfolio-item-three {
-  background-color: #222;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  width: 70%;
-}
-.portfolio-item-four {
-  background-color: #222;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  width: 300px;
-}
-.portfolio-Two {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 30px;
 }
 
 .portfolio-item:hover {
@@ -85,13 +43,4 @@
 .portfolio-item-description {
   font-size: 1rem;
   color: #bbb;
-}
-@font-face {
-  font-family: SyneBold;
-  src: url("../assests/fonts/Syne-Bold.ttf");
-}
-@font-face {
-  font-family: RubikRegular;
-  src: url("../assests/fonts/Rubik-Regular.ttf");
-  /* font-weight: bold; */
 }
