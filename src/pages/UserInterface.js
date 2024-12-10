@@ -1,5 +1,6 @@
 import React from "react";
-import "./Portfolio.css"; // Add styles in a separate CSS file for customization
+import "./AppDesign.css"; // Add styles in a separate CSS file for customization
+// Add styles in a separate CSS file for customization
 import FirstImage from "../assests/cab1.png";
 import Second from "../assests/cab2.png";
 import Third from "../assests/cab3.png";
@@ -22,15 +23,15 @@ const UserInterface = () => {
   ];
 
   return (
-    <div className="portfolio-container">
+    <div className="portfolio-container-Two">
       <h1 className="portfolio-title">User interface Design ( Desktop)</h1>
-      <div className="portfolio-grid">
+      <div className="portfolio-User-grid">
         {designs.map((design, index) => (
-          <div key={index} className="portfolio-item">
+          <div key={index} className="portfolio-App-item">
             <img
               src={design?.imageUrl}
               alt={design.title}
-              className="portfolio-image"
+              className="portfolio-App-image"
             />
           </div>
         ))}

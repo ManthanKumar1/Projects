@@ -14,32 +14,34 @@ const Home = () => {
     <div className="app">
       <div className="home-container">
         <div className="content">
-          <h1 className="heading">WELCOME TO MY PORTFOLIO</h1>
-          <button className="explore-btn">EXPLORE WORKS</button>
+          <h1 className="heading">WELCOME TO MY </h1>
+          <h1 className="heading-two">PORTFOLIO</h1>
         </div>
 
         <div className="home-container-two">
           <div className="bio">
-            <h2 className="sub-heading">Let’s get know about me closer</h2>
-            <p>
-              Sejal Jain from India (New Delhi). With a strong foundation in
-              design principles and a passion for crafting visual narratives, I
-              specialize in creating impactful designs that blend creativity and
-              functionality. My work spans a variety of mediums, including{" "}
-              <b>branding, digital illustration, and user interface design</b>,
-              allowing me to bring a fresh and versatile approach to each
-              project. Along with that I have experience in{" "}
-              <b>2D and 3D Animations</b>.
-            </p>
-            <p>
-              Please explore my portfolio for a glimpse into my process, from
-              conceptual sketches to final implementations. Each project
-              reflects my commitment to quality, attention to detail, and a
-              constant drive for innovation.
-            </p>
-          </div>
-          <div className="image">
-            <img src={profileImage} alt="Sejal Jain" />
+            <h2 className="sub-heading">About Me</h2>
+            <div>
+              <p>
+                {" "}
+                I am <b>Sejal Jain</b>, a passionate and driven designer with a
+                strong foundation in Graphic Designing, User Interface and 2D
+                Animation.{" "}
+              </p>
+              <p>
+                I specialize in creating impactful designs that blend creativity
+                and functionality. My work spans a variety of mediums, including
+                branding, digital illustration, and user interface design,
+                allowing me to bring a fresh and versatile approach to each
+                project.
+              </p>
+              <p>
+                Please explore my portfolio for a glimpse into my process, from
+                conceptual sketches to final implementations. Each project
+                reflects my commitment to quality, attention to detail, and a
+                constant drive for innovation.
+              </p>
+            </div>
           </div>
         </div>
       </div>

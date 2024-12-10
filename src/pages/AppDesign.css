@@ -1,0 +1,63 @@
+/* Portfolio Container */
+.portfolio-App {
+  background-color: #111; /* Dark background */
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Grid Layout */
+.portfolio-App-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem; /* Spacing between items */
+  width: 100%;
+  max-width: 1200px;
+}
+.portfolio-User-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem; /* Spacing between items */
+  width: 100%;
+  max-width: 1200px;
+}
+.portfolio-container-Two {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* Portfolio Item */
+.portfolio-App-item {
+  background-color: #1e1e1e; /* Slightly lighter dark tone */
+  border-radius: 15px; /* Rounded corners */
+  overflow: hidden; /* Ensure images stay inside the card */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Soft shadow */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.portfolio-App-item {
+  transform: translateY(-10px); /* Lift the card slightly on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7); /* Enhance shadow on hover */
+}
+
+/* Portfolio Image */
+.portfolio-App-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Decorative border */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}

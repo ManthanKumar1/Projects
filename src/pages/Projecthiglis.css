@@ -1,16 +1,18 @@
 .projects-section {
   padding: 2rem;
   background-color: #141414;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .projects-section h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 3.5rem;
+  font-family: SyneBold;
 }
 .projectbio {
-  font-size: 1.7em;
+  font-size: 1em;
   line-height: 1.6;
+  text-align: left;
+  padding: 1px 10rem;
 }
 
 .explore-more-button {
@@ -25,25 +27,37 @@
 
 .project-card {
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
+  /* /  display: flex; */
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
-.project-card img {
-  width: 100%;
-  max-width: 500px;
+.theImage {
+  width: 1200px;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
 
-.project-card h3 {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.project-card p {
+.project-card p h3 {
   font-size: 1.5rem;
+  font-weight: bold;
+  font-family: SyneBold;
+  text-align: left;
+  color: #ffff;
+  /* padding: 1px 10rem; */
+}
+@font-face {
+  font-family: SyneBold;
+  src: url("../assests/fonts/Syne-Bold.ttf");
+}
+@font-face {
+  font-family: RubikRegular;
+  src: url("../assests/fonts/Rubik-Regular.ttf");
+  /* font-weight: bold; */
+}
+.project-card p {
+  font-size: 1.4rem;
   color: #888;
+  font-family: RubikRegular;
 }

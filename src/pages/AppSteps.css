@@ -1,21 +1,24 @@
 .app-steps-container {
   background-color: #111;
   color: white;
-  padding: 2rem;
+  padding: 11.5rem;
   font-family: Arial, sans-serif;
 }
 
 .app-steps-title {
-  text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
+  font-family: SyneBold;
+}
+p {
+  font-family: RubikRegular;
 }
 
 .app-steps-content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+
+  justify-content: space-evenly;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -50,4 +53,50 @@
 .app-steps-image img {
   width: 100%;
   border-radius: 8px;
+}
+.process-container {
+  background-color: #111;
+  color: white;
+  padding: 12rem;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+}
+
+.process-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.process-item {
+  margin-bottom: 1.5rem;
+}
+
+.process-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.process-description {
+  font-size: 1rem;
+  color: #bbb;
+  margin: 0;
+}
+
+.process-footer {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #bbb;
+  text-align: center;
+}
+
+@font-face {
+  font-family: SyneBold;
+  src: url("../assests/fonts/Syne-Bold.ttf");
+}
+@font-face {
+  font-family: RubikRegular;
+  src: url("../assests/fonts/Rubik-Regular.ttf");
+  /* font-weight: bold; */
 }

@@ -9,6 +9,7 @@
   color: #ff7f00;
   margin-bottom: 10px;
   font-size: 24px;
+  font-family: RubikBOld;
 }
 
 .contact-email a {
@@ -51,4 +52,13 @@
   .social-link {
     font-size: 18px;
   }
+}
+@font-face {
+  font-family: SyneBold;
+  src: url("../assests/fonts/Syne-Bold.ttf");
+}
+@font-face {
+  font-family: RubikBOld;
+  src: url("../assests/fonts/Rubik-Bold.ttf");
+  /* font-weight: bold; */
 }
