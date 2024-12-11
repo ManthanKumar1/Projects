@@ -8,6 +8,7 @@
   font-size: 3.5rem;
   font-family: SyneBold;
 }
+
 .projectbio {
   font-size: 1em;
   line-height: 1.6;
@@ -33,10 +34,12 @@
   justify-content: center; */
 }
 
-.theImage {
-  width: 1200px;
+.project-video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
   border-radius: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 .project-card p h3 {
@@ -47,15 +50,18 @@
   color: #ffff;
   /* padding: 1px 10rem; */
 }
+
 @font-face {
   font-family: SyneBold;
   src: url("../assests/fonts/Syne-Bold.ttf");
 }
+
 @font-face {
   font-family: RubikRegular;
   src: url("../assests/fonts/Rubik-Regular.ttf");
   /* font-weight: bold; */
 }
+
 .project-card p {
   font-size: 1.4rem;
   color: #888;

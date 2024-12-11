@@ -1,13 +1,21 @@
 import React from "react";
 import "./Projecthiglis.css";
 
-import laptop from "../assests/laptop2.png";
+import laptop from "../assests/Sejal.mp4";
 const ProjectHighlight = () => {
   return (
     <section className="projects-section">
       <h2>My Projects Highlight</h2>
       <div className="project-card">
-        <img src={laptop} alt="project" className="theImage" />
+        {/* <img src={laptop} alt="project" className="theImage" /> */}
+        <video
+          src={laptop}
+          controls
+          className="project-video"
+          alt="3D Environment and Character Video"
+        >
+          Your browser does not support the video tag.
+        </video>
         <div className="projectbio">
           <p className="projectbio">
             <h3>3D Environment and Character</h3>
