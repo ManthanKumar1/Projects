@@ -12,7 +12,7 @@ app.use(cors({
     origin: '*'
 }))
 
-mongoose.connect("mongodb+srv://manthankumar:Password@cluster0.gax1eez.mongodb.net/assignment")
+mongoose.connect("mongodb+srv://manthankumar:Password@cluster0.gax1eez.mongodb.net/urban")
     .then(() => console.log("MongoDb is connected"))
     .catch((err) => console.log(err))
 
