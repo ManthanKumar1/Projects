@@ -17,7 +17,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/send-email", formData);
+      await axios.post("https://projects-1-iufu.onrender.com/send-email", formData);
       alert("Message sent!");
     } catch (error) {
       alert("Error sending message");
