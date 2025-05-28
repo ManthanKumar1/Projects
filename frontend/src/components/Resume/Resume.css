@@ -1,0 +1,32 @@
+.resume-section {
+  position: relative;
+  padding: 100px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.resume-content {
+  z-index: 2;
+}
+
+/* .resume-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.resume-subheading {
+  font-size: 1.25rem;
+  color: #cccccc;
+  margin-bottom: 40px;
+} */
+
+.resume-download-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
