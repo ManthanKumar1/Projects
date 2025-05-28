@@ -17,7 +17,7 @@ const experienceData = [
     },
     {
         title: "Backend Developer",
-        company: "Beta IT Technology",
+        company: "Beta Technology Private Limited",
         duration: "Aug 2021 – Dec 2022",
         details: [
             "Built and maintained backend services using Node.js",
@@ -28,7 +28,7 @@ const experienceData = [
     },
     {
         title: "Backend Developer",
-        company: "Z to A IT Solutions",
+        company: "Z to A IT Solutions Private Limited",
         duration: "May 2020 – July 2021",
         details: [
             "Designed backend for web applications with secure authentication",
@@ -65,7 +65,7 @@ function Experience() {
     return (
         <div className="experience-container">
             <Particle />
-            <h1 className="experience-title"><u><b>Professional Experience</b></u></h1>
+            <h1 className="experience-title"><b>Professional Experience</b></h1>
             <h5>Roles and responsibilities throughout my professional journey in software development.</h5>
             <br />
             <div className="experience-grid">

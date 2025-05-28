@@ -44,7 +44,7 @@ function Academics() {
   return (
     <div className="academics-container">
       <Particle />
-      <h1 className="academics-title">My Academic Journey</h1>
+      <h1 className="academics-title"><b>My Academic Journey</b></h1>
       <h5>My academic journey, courses, and educational achievements that have shaped my technical expertise.</h5>
       <br />
       <br />

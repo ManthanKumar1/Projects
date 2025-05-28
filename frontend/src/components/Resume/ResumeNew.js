@@ -65,7 +65,9 @@ function ResumeNew() {
 
         <Container className="resume-content">
           <h1 className="resume-heading">
-            My <strong className="purple">Resume</strong>
+            <b>
+              My <strong className="purple">Resume</strong>
+            </b>
           </h1>
           <p className="resume-subheading">
             Download my resume to explore my experience, skills, and professional background.

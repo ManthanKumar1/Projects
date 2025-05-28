@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { FaGithub, FaWhatsapp, FaEnvelope } from "react-icons/fa"; 
-import "./Contact.css"; 
+import { FaGithub, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import "./Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +19,7 @@ const Contact = () => {
     try {
       await axios.post("https://projects-1-iufu.onrender.com/send-email", formData);
       alert("Message sent!");
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       alert("Error sending message");
     }
@@ -29,10 +30,12 @@ const Contact = () => {
       {/* Get In Touch Section */}
       <div className="get-in-touch">
         <h2 className="title">
-          Get <span className="gradient-text">In Touch</span>
+          <b>
+            Get <span className="gradient-text">In Touch</span>
+          </b>
         </h2>
         <div className="underline"></div>
-        
+
         {/* Subtitle with proper line break */}
         <p className="subtitle">
           I'm currently open for freelance opportunities and interesting projects.
@@ -94,7 +97,7 @@ const Contact = () => {
           <FaGithub size={24} /> GitHub
         </a>
         <a href="https://wa.me/+917289950991" target="_blank" rel="noopener noreferrer" className="social-button">
-          <FaWhatsapp  size={24} /> WhatsApp
+          <FaWhatsapp size={24} /> WhatsApp
         </a>
         <a href="mailto:manthant1999@gmail.com" className="social-button">
           <FaEnvelope size={24} /> Email
