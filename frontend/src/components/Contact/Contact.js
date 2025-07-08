@@ -93,7 +93,7 @@ const Contact = () => {
 
       {/* Social Media Buttons with Icons */}
       <div className="social-links">
-        <a href="https://github.com/ManthanKumar1/Projects" target="_blank" rel="noopener noreferrer" className="social-button">
+        <a href="https://github.com/ManthanKumar1" target="_blank" rel="noopener noreferrer" className="social-button">
           <FaGithub size={24} /> GitHub
         </a>
         <a href="https://wa.me/+917289950991" target="_blank" rel="noopener noreferrer" className="social-button">
