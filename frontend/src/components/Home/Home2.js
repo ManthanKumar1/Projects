@@ -6,7 +6,7 @@ import {
   AiFillGithub,
   AiOutlineMail,
 } from "react-icons/ai";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 function Home2() {
   return (
@@ -93,6 +93,16 @@ function Home2() {
                   className="icon-colour  home-social-icons"
                 >
                   <FaWhatsapp />
+                </a>
+              </li>
+              <li className="social-icons">
+                <a
+                  href="https://www.linkedin.com/in/manthan-kumar-2999ab249"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="icon-colour  home-social-icons"
+                >
+                  <FaLinkedin />
                 </a>
               </li>
             </ul>

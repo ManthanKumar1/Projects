@@ -2,6 +2,7 @@ import React from "react";
 import "./Academics.css";
 import Particle from "../Particle";
 import { FaGraduationCap } from "react-icons/fa"
+import MernCertificate from '../../Assets/Certificates/Mern.jpg'
 
 const academicsData = [
   {
@@ -40,6 +41,13 @@ const academicsData = [
   },
 ];
 
+let certificates = [
+  {
+    certificate: MernCertificate,
+    title: "MERN Stack"
+  },
+]
+
 function Academics() {
   return (
     <div className="academics-container">
@@ -65,6 +73,28 @@ function Academics() {
                 <li key={i}>{detail}</li>
               ))}
             </ul>
+          </div>
+        ))}
+      </div>
+
+      <br />
+      <br />
+      <hr />
+
+      <h1><b>Certificates</b></h1>
+      <br />
+      <div className="academics-grid">
+        {certificates.map((edu, index) => (
+          <div key={index} className="academic-card">
+            <div className="academic-icon">
+              <FaGraduationCap size={30} color="#6c63ff" />
+            </div>
+            <img
+              src={edu.certificate}
+              alt={`Certificate - ${edu.title}`}
+              style={{ width: "100%", height: "auto", borderRadius: "8px", marginTop: "10px", objectFit: "cover" }}
+            />
+            <h2 style={{ marginTop: "12px", marginLeft: "25%" }}>{edu.title}</h2>
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { FaGithub, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaWhatsapp, FaEnvelope, FaLinkedin } from "react-icons/fa";
 import "./Contact.css";
 
 const Contact = () => {
@@ -101,6 +101,9 @@ const Contact = () => {
         </a>
         <a href="mailto:manthant1999@gmail.com" className="social-button">
           <FaEnvelope size={24} /> Email
+        </a>
+        <a href="https://www.linkedin.com/in/manthan-kumar-2999ab249" className="social-button" target="_blank" rel="noopener noreferrer"        >
+          <FaLinkedin size={24} /> LinkedIn
         </a>
       </div>
 

@@ -4,7 +4,7 @@ import {
   AiFillGithub,
   AiOutlineMail
 } from "react-icons/ai";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   let date = new Date();
@@ -48,6 +48,16 @@ function Footer() {
                 rel="noopener noreferrer"
               >
                 <FaWhatsapp /> {/* Make sure to import this icon */}
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="https://www.linkedin.com/in/manthan-kumar-2999ab249/"
+                style={{ color: "white" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin /> {/* Make sure to import this icon */}
               </a>
             </li>
           </ul>

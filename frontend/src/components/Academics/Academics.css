@@ -19,6 +19,15 @@
   gap: 20px;
 }
 
+/* .academic-card {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  width: 320px;
+  text-align: left;
+} */
+
 .academic-card {
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
@@ -26,6 +35,13 @@
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
   width: 320px;
   text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.academic-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .academic-card h2 {
@@ -55,4 +71,10 @@
 .academic-icon {
   text-align: center;
   margin-bottom: 10px;
+}
+
+.academic-card img {
+  max-height: 400px;
+  object-fit: contain;
+  border: 1px solid #ddd;
 }
