@@ -131,16 +131,20 @@ let requestBook = async (req, res) => {
             return res.status(400).send({ status: false, message: "You cannot request your own book" })
         }
 
-        let alreadyRequested = book.requests.some(r => r.user.toString() === userId)
-        if (alreadyRequested) {
+        let existingRequest = book.requests.find(r => r.user.toString() === userId)
+
+        if (existingRequest && existingRequest.status !== "declined") {
             return res.status(400).send({ status: false, message: "You have already requested this book" })
+        }
+
+        if (existingRequest && existingRequest.status === "declined") {
+            book.requests = book.requests.filter(r => r.user.toString() !== userId)
         }
 
         book.requests.push({ user: userId })
         await book.save()
 
         return res.status(200).send({ status: true, message: "Book requested successfully", data: book })
-
     } catch (error) {
         return res.status(500).send({ status: false, message: error.message })
     }

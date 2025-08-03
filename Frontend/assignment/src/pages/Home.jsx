@@ -8,7 +8,6 @@ const Home = () => {
   const [currentUserId, setCurrentUserId] = useState('');
 
   useEffect(() => {
-    // Get user ID from token payload
     const token = sessionStorage.getItem('token');
     if (token) {
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -26,6 +25,11 @@ const Home = () => {
     fetchBooks();
   }, []);
 
+  const canRequestAgain = (requests) => {
+    const userRequest = requests?.find(req => req.user?._id === currentUserId);
+    return userRequest?.status === 'declined';
+  };
+
   return (
     <div>
       <h2>Books</h2>
@@ -33,21 +37,33 @@ const Home = () => {
       <ul>
         {books.map(book => {
           const isOwner = book.owner?._id === currentUserId;
-          const alreadyRequested = book.requests?.some(req => req.user?._id === currentUserId);
+          const userRequest = book.requests?.find(req => req.user?._id === currentUserId);
 
           return (
             <li key={book._id} style={{ marginBottom: '20px' }}>
               <strong>{book.title}</strong> by {book.author} — ₹{book.price} <br />
               Owner: {book.owner?.username || 'N/A'} <br />
-              
-              {!isOwner && !alreadyRequested && (
-                <Link to={`/request/${book._id}`}>
-                  <button>Buy</button>
-                </Link>
+
+              {!isOwner && (
+                <>
+                  {(!userRequest || userRequest?.status === 'declined') && (
+                    <Link to={`/request/${book._id}`}>
+                      <button>{userRequest ? 'Re-request' : 'Buy'}</button>
+                    </Link>
+                  )}
+                  {userRequest && userRequest.status === 'pending' && (
+                    <span style={{ color: 'orange' }}>Already Requested</span>
+                  )}
+                  {userRequest && userRequest.status === 'accepted' && (
+                    <span style={{ color: 'green' }}>Request Accepted</span>
+                  )}
+                  {userRequest && userRequest.status === 'declined' && (
+                    <span style={{ color: 'red', marginLeft: '10px' }}>Previously Declined</span>
+                  )}
+                </>
               )}
 
               {isOwner && <span style={{ color: 'gray' }}>Your Book</span>}
-              {alreadyRequested && !isOwner && <span style={{ color: 'orange' }}>Already Requested</span>}
             </li>
           );
         })}
