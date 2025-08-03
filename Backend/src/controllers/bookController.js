@@ -175,7 +175,11 @@ let updateRequestStatus = async (req, res) => {
         }
 
         request.status = status
-        book.remove = true // mark book as sold
+
+        if (status === "accepted") {
+            book.remove = true
+        }
+
         await book.save()
 
         return res.status(200).send({ status: true, message: "Request status updated", data: request })

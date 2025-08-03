@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,11 +14,10 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/login', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      const res = await axios.post('https://projects-5epb.onrender.com/login', formData);
       setMessage(res.data.message);
-      localStorage.setItem('token', res.data.data.token);
+      sessionStorage.setItem('token', res.data.data.token);
+      navigate('/home'); // ✅ Redirect to Home
     } catch (err) {
       setMessage(err.response?.data?.message || 'Login failed');
     }
@@ -25,7 +26,7 @@ const Login = () => {
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <form onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
         <br />
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
