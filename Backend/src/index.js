@@ -29,14 +29,11 @@ app.use((req, res) => {
   return res.status(404).send({ status: false, message: "Path Not Found" })
 });
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.mongodb)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err.message);
-    process.exit(1); // exit so the app doesn’t hang
+    process.exit(1);
   });
 
 let PORT = process.env.PORT || 3000
