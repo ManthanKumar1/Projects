@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './css/ManageRequests.css'
+import { Link } from 'react-router-dom';
+import './css/ManageRequests.css';
 
 const ManageRequests = () => {
   const [books, setBooks] = useState([]);
@@ -44,7 +45,11 @@ const ManageRequests = () => {
 
   return (
     <div className="manage-requests-container">
-      <h2>Manage Book Requests</h2>
+      <div className="top-bar">
+        <h2>Manage Book Requests</h2>
+        <Link to="/" className="back-home-button">Back to Home</Link>
+      </div>
+
       {msg && <p>{msg}</p>}
 
       {books.map(book => (
@@ -61,14 +66,7 @@ const ManageRequests = () => {
               <li key={request._id}>
                 <strong>User:</strong> {request.user?.username || 'Unknown'}<br />
                 <strong>Status:</strong>{' '}
-                <span
-                  className={`status-icon ${request.status === 'accepted'
-                      ? 'accepted'
-                      : request.status === 'declined'
-                        ? 'declined'
-                        : 'pending'
-                    }`}
-                >
+                <span className={`status-icon ${request.status}`}>
                   {request.status === 'accepted'
                     ? '✅ Accepted'
                     : request.status === 'declined'

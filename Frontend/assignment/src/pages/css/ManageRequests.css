@@ -3,12 +3,29 @@
   margin: 40px auto;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
 }
 
-.manage-requests-container h2 {
-  text-align: center;
+/* NEW: top bar styling */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
-  color: #2c3e50;
+}
+
+.back-home-button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.back-home-button:hover {
+  background-color: #217dbb;
 }
 
 .book-card {

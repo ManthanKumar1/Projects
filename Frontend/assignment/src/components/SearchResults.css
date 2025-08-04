@@ -1,0 +1,50 @@
+.search-results {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-results h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.book-list {
+  list-style: none;
+  padding: 0;
+}
+
+.book-item {
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.book-item:hover {
+  transform: scale(1.02);
+}
+
+.book-card {
+  border: 1px solid #ddd;
+  border-left: 5px solid #3498db;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  padding: 15px 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.book-card h3 {
+  margin: 0 0 10px;
+  color: #34495e;
+}
+
+.book-card p {
+  margin: 4px 0;
+  color: #555;
+}

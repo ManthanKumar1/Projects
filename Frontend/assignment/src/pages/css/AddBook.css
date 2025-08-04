@@ -7,6 +7,28 @@
   border-radius: 8px;
   font-family: Arial, sans-serif;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-home-button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.back-home-button:hover {
+  background-color: #217dbb;
 }
 
 .add-book-form {

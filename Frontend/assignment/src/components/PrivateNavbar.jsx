@@ -27,6 +27,7 @@ const PrivateNavbar = ({ onLogout }) => {
         <Link to="/addbook">Add Book</Link>
         <Link to="/manage-requests">Manage Requests</Link>
         <Link to="/sold-bought-books">Sold/Bought Books</Link>
+        <Link to="/profile">Profile</Link>
       </div>
 
       <form onSubmit={handleSearchSubmit} className="search-form">

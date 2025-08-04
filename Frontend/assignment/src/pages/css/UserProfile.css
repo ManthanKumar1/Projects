@@ -1,0 +1,43 @@
+.user-profile-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #217dbb;
+}
+
+.user-info p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.user-message {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 18px;
+  color: #d9534f;
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './css/AddBook.css';
 
 const AddBook = () => {
@@ -53,7 +53,11 @@ const AddBook = () => {
 
   return (
     <div className="add-book-container">
-      <h2>Add Book</h2>
+      <div className="top-bar">
+        <h2>Add Book</h2>
+        <Link to="/" className="back-home-button">Back to Home</Link>
+      </div>
+
       <form onSubmit={handleSubmit} encType="multipart/form-data" className="add-book-form">
         <input type="text" name="title" placeholder="Title" onChange={handleChange} required />
         <input type="text" name="author" placeholder="Author" onChange={handleChange} required />
@@ -68,6 +72,7 @@ const AddBook = () => {
         <input type="file" name="image" multiple onChange={handleImageChange} accept="image/*" />
         <button type="submit">Add Book</button>
       </form>
+
       {message && <p className="add-book-message">{message}</p>}
     </div>
   );

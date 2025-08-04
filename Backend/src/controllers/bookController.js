@@ -132,21 +132,21 @@ let requestBook = async (req, res) => {
         }
 
         let existingRequest = book.requests.find(r => r.user.toString() === userId)
-
-        if (existingRequest && existingRequest.status !== "declined") {
-            return res.status(400).send({ status: false, message: "You have already requested this book" })
-        }
-
-        if (existingRequest && existingRequest.status === "declined") {
-            book.requests = book.requests.filter(r => r.user.toString() !== userId)
+        if (existingRequest) {
+            if (existingRequest.status === 'declined') {
+                book.requests = book.requests.filter(r => r.user.toString() !== userId)
+            } else {
+                return res.status(400).send({ status: false, message: "You have already requested this book" })
+            }
         }
 
         book.requests.push({ user: userId })
+        book.markModified('requests')
         await book.save()
 
         return res.status(200).send({ status: true, message: "Book requested successfully", data: book })
     } catch (error) {
-        return res.status(500).send({ status: false, message: error.message })
+        return res.status(500).send({ status: false, message: error.message });
     }
 }
 
@@ -238,7 +238,7 @@ let updateBook = async (req, res) => {
         let updateData = req.body
         let images = req.files
 
-        let allowedFields = ['title', 'author', 'condition', 'originalPrice', 'price', 'image']
+        let allowedFields = ['title', 'author', 'condition', 'originalPrice', 'price']
 
         if (!isValidObjectId(bookId)) {
             return res.status(400).send({ status: false, message: "Invalid book ID" })
@@ -257,22 +257,33 @@ let updateBook = async (req, res) => {
             if (!allowedFields.includes(key)) {
                 return res.status(400).send({ status: false, message: `Field '${key}' cannot be updated` })
             }
+
             if (key === 'condition' && !["Good", "Bad", "Moderate"].includes(updateData[key])) {
                 return res.status(400).send({ status: false, message: "Invalid condition" })
             }
+
+            book[key] = updateData[key]
         }
 
-        let imagePaths = []
+        // Handle images (if any)
         if (images && images.length > 0) {
+            let imagePaths = []
+
             for (let img of images) {
                 let fileName = Date.now() + "-" + img.originalname.replace(/\s+/g, "_")
                 let uploadPath = path.join(__dirname, "../../uploads", fileName)
                 fs.writeFileSync(uploadPath, img.buffer)
                 imagePaths.push(`https://projects-5epb.onrender.com/uploads/${fileName}`)
             }
+
+            // Optional: replace old images or append to existing
+            // Replace all old images:
+            book.image = imagePaths
+
+            // If you want to append instead:
+            // book.image = [...(book.image || []), ...imagePaths];
         }
 
-        Object.assign(book, updateData)
         await book.save()
 
         return res.status(200).send({ status: true, message: "Book updated", data: book })
@@ -360,4 +371,31 @@ let searchBook = async (req, res) => {
     }
 }
 
-module.exports = { createBook, getBook, requestBook, updateRequestStatus, showRemove, updateBook, deleteBook, getBookImage, searchBook }
+let filterBook = async (req, res) => {
+    try {
+        let { sort } = req.query
+
+        if (sort && sort !== "lowToHigh" && sort !== "highToLow") {
+            return res.status(400).send({ status: false, message: "Invalid sort value. Allowed values: 'lowToHigh' or 'highToLow'" })
+        }
+
+        let sortOption = {}
+        if (sort === "highToLow") {
+            sortOption.price = -1
+        } else if (sort === "lowToHigh") {
+            sortOption.price = 1
+        }
+
+        const books = await bookModel.find({ isDeleted: false }).sort(sortOption)
+
+        if (!books.length) {
+            return res.status(404).send({ status: false, message: "No books found" })
+        }
+
+        return res.status(200).send({ status: true, data: books })
+    } catch (error) {
+        return res.status(500).send({ status: false, message: error.message })
+    }
+}
+
+module.exports = { createBook, getBook, requestBook, updateRequestStatus, showRemove, updateBook, deleteBook, getBookImage, searchBook, filterBook }

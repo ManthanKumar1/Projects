@@ -103,4 +103,20 @@ let login = async (req, res) => {
     }
 }
 
-module.exports = { signup, login }
+let getUser = async (req, res) => {
+    try {
+        let userId = req.user.id;
+
+        let fetchUser = await userModel.findOne({ _id: userId, isDeleted: false }, { username: 1, email: 1, _id: 0 })
+
+        if (!fetchUser) {
+            return res.status(404).send({ status: false, message: "User not found" })
+        }
+
+        return res.status(200).send({ status: true, data: fetchUser })
+    } catch (error) {
+        return res.status(500).send({ status: false, message: error.message })
+    }
+}
+
+module.exports = { signup, login, getUser }

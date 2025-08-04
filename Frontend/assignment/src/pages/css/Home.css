@@ -51,56 +51,16 @@
   color: #000;
 }
 
-.book-actions {
-  margin-top: 8px;
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.book-actions button {
-  padding: 6px 12px;
-  margin-right: 10px;
-  font-weight: 500;
-  border: none;
+.sort-dropdown {
+  padding: 8px;
+  font-size: 16px;
   border-radius: 4px;
-  cursor: pointer;
-}
-
-.book-actions button:hover {
-  opacity: 0.9;
-}
-
-.book-actions .buy-button {
-  background-color: #3498db;
-  color: white;
-}
-
-.book-actions .update-button {
-  background-color: #f39c12;
-  color: white;
-}
-
-.book-actions .delete-button {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.status-text {
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 6px;
-}
-
-.status-text.accepted {
-  color: green;
-}
-
-.status-text.pending {
-  color: orange;
-}
-
-.status-text.declined {
-  color: red;
-}
-
-.status-text.owner {
-  color: gray;
+  border: 1px solid #ccc;
 }

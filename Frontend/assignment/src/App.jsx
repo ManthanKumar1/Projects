@@ -12,6 +12,7 @@ import ShowRemovedBooks from './pages/ShowRemovedBooks';
 import UpdateBook from './pages/UpdateBook';
 import BookDetail from './pages/BookDetail';
 import SearchResults from './components/SearchResults';
+import UserProfile from './pages/UserProfile';
 
 import PublicNavbar from './components/PublicNavbar';
 import PrivateNavbar from './components/PrivateNavbar';
@@ -46,6 +47,7 @@ function App() {
         <Route path="/updateBook/:bookId" element={<UpdateBook />} />
         <Route path="/book/:bookId" element={<BookDetail />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </>
   );
