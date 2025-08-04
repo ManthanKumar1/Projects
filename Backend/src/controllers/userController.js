@@ -11,7 +11,6 @@ let signup = async (req, res) => {
         }
 
         let { username, email, password } = data
-        console.log(data)
         if (!isValid(username)) {
             return res.status(400).send({ status: false, message: "Username is missing or invalid" })
         }
@@ -57,7 +56,6 @@ let signup = async (req, res) => {
 
 let login = async (req, res) => {
     try {
-        console.log(req.body)
         let data = req.body
         if (Object.keys(data).length === 0) {
             return res.status(400).send({ status: false, messaeg: "body cannot be empty" })
