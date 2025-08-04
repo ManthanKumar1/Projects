@@ -3,7 +3,7 @@ import axios from 'axios';
 import './css/UserProfile.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-const UserProfile = () => {
+const UserProfile = ({ onLogout }) => {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
   const [username, setUsername] = useState('');
@@ -38,6 +38,10 @@ const UserProfile = () => {
       );
       setUser(res.data.data);
       setMessage('User updated successfully.');
+
+      // Refresh the page after successful update
+      navigate('/profile', { replace: true });
+      setTimeout(() => window.location.reload(), 100);
     } catch (err) {
       setMessage(err.response?.data?.message || 'Failed to update user');
     }
@@ -47,10 +51,12 @@ const UserProfile = () => {
     try {
       await axios.post(
         'https://projects-5epb.onrender.com/deleteUser',
+        {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
       sessionStorage.clear();
-      navigate('/login'); 
+      onLogout(); // switch to public navbar
+      navigate('/'); // go to login
     } catch (err) {
       setMessage(err.response?.data?.message || 'Failed to delete user');
     }

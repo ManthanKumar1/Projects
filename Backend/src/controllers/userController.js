@@ -19,7 +19,7 @@ let signup = async (req, res) => {
             return res.status(400).send({ status: false, message: "Email is missing or invalid" })
         }
 
-        let checkEmail = await userModel.findOne({ email: email })
+        let checkEmail = await userModel.findOne({ email: email, isDeleted: false })
         if (checkEmail) {
             return res.status(400).send({ status: false, message: "Email is already in use" })
         }
@@ -71,7 +71,7 @@ let login = async (req, res) => {
             return res.status(400).send({ status: false, message: "Password is missing or invalid" })
         }
 
-        let findUser = await userModel.findOne({ email: email })
+        let findUser = await userModel.findOne({ email: email, isDeleted: false })
 
         if (!findUser) {
             return res.status(404).send({ status: false, message: "User not found" })

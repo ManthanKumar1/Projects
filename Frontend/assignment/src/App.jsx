@@ -1,5 +1,5 @@
 // App.jsx
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Signup from './pages/Signup';
@@ -19,12 +19,20 @@ import PrivateNavbar from './components/PrivateNavbar';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.getItem('token'));
+  const location = useLocation();
+
+  // 🔁 Watch token changes in sessionStorage
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, [location.pathname]); // refresh on route change
 
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
+    sessionStorage.clear(); // ensure token is removed
     setIsLoggedIn(false);
   };
 
@@ -47,7 +55,7 @@ function App() {
         <Route path="/updateBook/:bookId" element={<UpdateBook />} />
         <Route path="/book/:bookId" element={<BookDetail />} />
         <Route path="/search" element={<SearchResults />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile onLogout={handleLogout} />} />
       </Routes>
     </>
   );
