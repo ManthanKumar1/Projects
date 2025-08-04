@@ -371,25 +371,28 @@ let searchBook = async (req, res) => {
     }
 }
 
-let filterBook = async (req, res) => {
+const filterBook = async (req, res) => {
     try {
-        let { sort } = req.query
+        const { sort } = req.query
 
         if (sort && sort !== "lowToHigh" && sort !== "highToLow") {
             return res.status(400).send({ status: false, message: "Invalid sort value. Allowed values: 'lowToHigh' or 'highToLow'" })
         }
 
-        let sortOption = {}
-        if (sort === "highToLow") {
-            sortOption.price = -1
-        } else if (sort === "lowToHigh") {
-            sortOption.price = 1
-        }
-
-        const books = await bookModel.find({ isDeleted: false }).sort(sortOption).populate('owner', 'username')
+        let books = await bookModel.find({ isDeleted: false }).populate('owner', 'username').lean()
 
         if (!books.length) {
             return res.status(404).send({ status: false, message: "No books found" })
+        }
+
+        books.forEach(book => {
+            book.price = Number(book.price)
+        })
+
+        if (sort === "lowToHigh") {
+            books.sort((a, b) => a.price - b.price)
+        } else if (sort === "highToLow") {
+            books.sort((a, b) => b.price - a.price)
         }
 
         return res.status(200).send({ status: true, data: books })
