@@ -31,7 +31,7 @@ const UserProfile = () => {
 
   const handleUpdate = async () => {
     try {
-      const res = await axios.put(
+      const res = await axios.post(
         'https://projects-5epb.onrender.com/updateUser',
         { username, email },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -45,12 +45,12 @@ const UserProfile = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(
+      await axios.post(
         'https://projects-5epb.onrender.com/deleteUser',
         { headers: { Authorization: `Bearer ${token}` } }
       );
       sessionStorage.clear();
-      navigate('/login'); // Or redirect elsewhere after delete
+      navigate('/login'); 
     } catch (err) {
       setMessage(err.response?.data?.message || 'Failed to delete user');
     }
