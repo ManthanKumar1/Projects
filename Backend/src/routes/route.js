@@ -15,8 +15,8 @@ let {authentication} = require('../middlewares/auth')
 router.post('/signup', parseFormData, signup)
 router.post('/login', parseFormData, login)
 router.get('/getUser', authentication, parseFormData, getUser)
-router.post('/updateUser', parseFormData, updateUser)
-router.post('/deleteUser', parseFormData, deleteUser)
+router.post('/updateUser', authentication, parseFormData, updateUser)
+router.post('/deleteUser', authentication, parseFormData, deleteUser)
 
 // book
 router.post('/createBook', authentication, upload.array('image', 5), createBook)
