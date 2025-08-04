@@ -45,7 +45,7 @@ const BookDetail = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert('Book deleted successfully');
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       alert(err.response?.data?.message || 'Failed to delete book');
     }
@@ -64,7 +64,7 @@ const BookDetail = () => {
     <div className="book-detail-container">
       <div className="top-bar">
         <h2>{book.title}</h2>
-        <Link to="/" className="back-button">Back to Home</Link>
+        <Link to="/home" className="back-button">Back to Home</Link>
       </div>
 
       <img

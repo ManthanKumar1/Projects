@@ -23,7 +23,7 @@ const RequestBook = () => {
         );
         setMessage(res.data.message);
 
-        setTimeout(() => navigate('/'), 2000);
+        setTimeout(() => navigate('/home'), 2000);
       } catch (err) {
         setMessage(err.response?.data?.message || 'Something went wrong');
       }

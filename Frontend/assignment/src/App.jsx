@@ -38,8 +38,8 @@ function App() {
 
       <Routes>
         <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login onLogin={handleLogin} />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/addbook" element={<AddBook />} />
         <Route path="/request/:bookId" element={<RequestBook />} />
         <Route path="/manage-requests" element={<ManageRequests />} />

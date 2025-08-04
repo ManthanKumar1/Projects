@@ -47,7 +47,7 @@ const ManageRequests = () => {
     <div className="manage-requests-container">
       <div className="top-bar">
         <h2>Manage Book Requests</h2>
-        <Link to="/" className="back-home-button">Back to Home</Link>
+        <Link to="/home" className="back-home-button">Back to Home</Link>
       </div>
 
       {msg && <p>{msg}</p>}

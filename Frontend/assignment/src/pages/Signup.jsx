@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './css/Signup.css'; // Create this CSS file
+import './css/Signup.css';
 
 const Signup = ({ onLogin }) => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
@@ -19,7 +19,7 @@ const Signup = ({ onLogin }) => {
       setMessage(res.data.message);
       sessionStorage.setItem('token', res.data.data.token);
       onLogin();
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Signup failed');
     }

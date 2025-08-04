@@ -386,7 +386,7 @@ let filterBook = async (req, res) => {
             sortOption.price = 1
         }
 
-        const books = await bookModel.find({ isDeleted: false }).sort(sortOption)
+        const books = await bookModel.find({ isDeleted: false }).sort(sortOption).populate('owner', 'username')
 
         if (!books.length) {
             return res.status(404).send({ status: false, message: "No books found" })

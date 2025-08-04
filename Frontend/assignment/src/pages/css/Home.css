@@ -5,11 +5,32 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .home-heading {
   font-size: 28px;
-  margin-bottom: 20px;
   color: #2c3e50;
-  text-align: center;
+}
+
+.sort-dropdown {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.sort-dropdown:focus {
+  border-color: #2c3e50;
+  outline: none;
 }
 
 .book-list {
@@ -49,18 +70,4 @@
 .book-info strong {
   font-size: 18px;
   color: #000;
-}
-
-.home-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.sort-dropdown {
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
 }

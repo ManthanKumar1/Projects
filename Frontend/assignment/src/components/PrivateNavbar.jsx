@@ -9,7 +9,7 @@ const PrivateNavbar = ({ onLogout }) => {
   const handleLogout = () => {
     sessionStorage.removeItem('token');
     onLogout();
-    navigate('/login');
+    navigate('/');
   };
 
   const handleSearchSubmit = (e) => {
@@ -23,7 +23,7 @@ const PrivateNavbar = ({ onLogout }) => {
   return (
     <nav className="private-navbar">
       <div className="nav-links">
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
         <Link to="/addbook">Add Book</Link>
         <Link to="/manage-requests">Manage Requests</Link>
         <Link to="/sold-bought-books">Sold/Bought Books</Link>

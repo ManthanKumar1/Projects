@@ -6,7 +6,7 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 const parseFormData = multer().none()
 
-let { signup, login, getUser } = require('../controllers/userController')
+let { signup, login, getUser, updateUser, deleteUser } = require('../controllers/userController')
 const { createBook, getBook, requestBook, updateRequestStatus, showRemove, updateBook, deleteBook, getBookImage, searchBook, filterBook } = require('../controllers/bookController')
 
 let {authentication} = require('../middlewares/auth')
@@ -14,7 +14,9 @@ let {authentication} = require('../middlewares/auth')
 // user
 router.post('/signup', parseFormData, signup)
 router.post('/login', parseFormData, login)
-router.post('/getUser', authentication, parseFormData, getUser)
+router.get('/getUser', authentication, parseFormData, getUser)
+router.post('/updateUser', parseFormData, updateUser)
+router.post('/deleteUser', parseFormData, deleteUser)
 
 // book
 router.post('/createBook', authentication, upload.array('image', 5), createBook)

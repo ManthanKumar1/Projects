@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './css/UpdateBook.css'; // Add this line
+import './css/UpdateBook.css';
 
 const UpdateBook = () => {
   const { bookId } = useParams();
@@ -68,7 +68,7 @@ const UpdateBook = () => {
       );
 
       alert(res.data.message);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       alert(err.response?.data?.message || 'Failed to update book');
     }

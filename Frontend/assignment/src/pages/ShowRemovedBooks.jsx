@@ -66,7 +66,7 @@ const ShowRemovedBooks = () => {
             <option value="Bought">Bought</option>
           </select>
         </div>
-        <button className="home-button" onClick={() => navigate('/')}>
+        <button className="home-button" onClick={() => navigate('/home')}>
           Back to Home
         </button>
       </div>

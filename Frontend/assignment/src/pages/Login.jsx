@@ -19,7 +19,7 @@ const Login = ({ onLogin }) => {
       setMessage(res.data.message);
       sessionStorage.setItem('token', res.data.data.token);
       onLogin();
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Login failed');
     }

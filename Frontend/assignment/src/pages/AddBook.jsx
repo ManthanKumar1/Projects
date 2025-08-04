@@ -45,7 +45,7 @@ const AddBook = () => {
         },
       });
       setMessage(res.data.message);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Failed to create book');
     }
@@ -55,7 +55,7 @@ const AddBook = () => {
     <div className="add-book-container">
       <div className="top-bar">
         <h2>Add Book</h2>
-        <Link to="/" className="back-home-button">Back to Home</Link>
+        <Link to="/home" className="back-home-button">Back to Home</Link>
       </div>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data" className="add-book-form">

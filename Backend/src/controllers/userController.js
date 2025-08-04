@@ -103,7 +103,7 @@ let login = async (req, res) => {
 
 let getUser = async (req, res) => {
     try {
-        let userId = req.user.id;
+        let userId = req.user.id
 
         let fetchUser = await userModel.findOne({ _id: userId, isDeleted: false }, { username: 1, email: 1, _id: 0 })
 
@@ -117,4 +117,52 @@ let getUser = async (req, res) => {
     }
 }
 
-module.exports = { signup, login, getUser }
+let updateUser = async (req, res) => {
+    try {
+        let userId = req.user.id
+        let { username, email } = req.body
+
+        let existingUser = await userModel.findOne({ _id: userId, isDeleted: false })
+        if (!existingUser) {
+            return res.status(404).send({ status: false, message: "User not found" })
+        }
+
+        if (!isValid(username)) {
+            return res.status(400).send({ status: false, message: "Username is missing or invalid" })
+        }
+
+        if (!isValid(email) || !isValidMail.test(email)) {
+            return res.status(400).send({ status: false, message: "Email is missing or invalid" })
+        }
+
+        let emailTaken = await userModel.findOne({ email, _id: { $ne: userId } })
+        if (emailTaken) {
+            return res.status(400).send({ status: false, message: "Email is already in use" })
+        }
+
+        let updatedUser = await userModel.findOneAndUpdate({ _id: userId, isDeleted: false }, { $set: { username, email } }, { new: true })
+
+        return res.status(200).send({ status: true, data: updatedUser })
+    } catch (error) {
+        return res.status(500).send({ status: false, message: error.message })
+    }
+}
+
+let deleteUser = async (req, res) => {
+    try {
+        let userId = req.user.id
+
+        let user = await userModel.findOne({ _id: userId, isDeleted: false })
+        if (!user) {
+            return res.status(404).send({ status: false, message: "User not found" })
+        }
+
+        await userModel.findOneAndUpdate({ _id: userId }, { $set: { isDeleted: true } }, { new: true })
+
+        return res.status(200).send({ status: true, message: "User deleted successfully" })
+    } catch (error) {
+        return res.status(500).send({ status: false, message: error.message })
+    }
+}
+
+module.exports = { signup, login, getUser, updateUser, deleteUser }

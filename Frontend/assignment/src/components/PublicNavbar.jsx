@@ -5,7 +5,7 @@ const PublicNavbar = () => {
   return (
     <nav className="public-navbar">
       <Link to="/signup">Signup</Link>
-      <Link to="/login">Login</Link>
+      <Link to="/">Login</Link>
     </nav>
   );
 };

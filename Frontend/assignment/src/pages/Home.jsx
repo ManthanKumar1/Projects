@@ -6,7 +6,7 @@ import './css/Home.css';
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [msg, setMsg] = useState('');
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState('all');
   const [currentUserId, setCurrentUserId] = useState('');
   const token = sessionStorage.getItem('token');
   const navigate = useNavigate();
@@ -17,17 +17,22 @@ const Home = () => {
       setCurrentUserId(payload.id);
     }
 
-    const fetchBooks = async () => {
-      try {
-        const res = await axios.get(`https://projects-5epb.onrender.com/filterBooks${sort ? `?sort=${sort}` : ''}`);
-        setBooks(res.data.data);
-      } catch (error) {
-        setMsg(error.response?.data?.message || 'Failed to fetch books');
-      }
-    };
-
     fetchBooks();
   }, [token, sort]);
+
+  const fetchBooks = async () => {
+    try {
+      let url =
+        sort === 'lowToHigh' || sort === 'highToLow'
+          ? `https://projects-5epb.onrender.com/filterBook?sort=${sort}`
+          : `https://projects-5epb.onrender.com/getBook`;
+
+      const res = await axios.get(url);
+      setBooks(res.data.data);
+    } catch (error) {
+      setMsg(error.response?.data?.message || 'Failed to fetch books');
+    }
+  };
 
   return (
     <div className="home-container">
@@ -38,16 +43,16 @@ const Home = () => {
           value={sort}
           onChange={(e) => setSort(e.target.value)}
         >
-          <option value="">-- Sort by Price --</option>
-          <option value="lowToHigh">Low to High</option>
-          <option value="highToLow">High to Low</option>
+          <option value="all">All</option>
+          <option value="lowToHigh">Price: Low to High</option>
+          <option value="highToLow">Price: High to Low</option>
         </select>
       </div>
 
       {msg && <p>{msg}</p>}
 
       <ul className="book-list">
-        {books.map(book => {
+        {books.map((book) => {
           const imageUrl = `https://projects-5epb.onrender.com/getBookImage?bookId=${book._id}`;
 
           return (
