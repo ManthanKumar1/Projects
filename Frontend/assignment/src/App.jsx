@@ -1,4 +1,7 @@
-import { Routes, Route, Link } from 'react-router-dom';
+// App.jsx
+import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -7,22 +10,42 @@ import RequestBook from './pages/RequestBook';
 import ManageRequests from './pages/ManageRequests';
 import ShowRemovedBooks from './pages/ShowRemovedBooks';
 import UpdateBook from './pages/UpdateBook';
+import BookDetail from './pages/BookDetail';
+import SearchResults from './components/SearchResults';
+
+import PublicNavbar from './components/PublicNavbar';
+import PrivateNavbar from './components/PrivateNavbar';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.getItem('token'));
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
-      <nav>
-        <Link to="/signup">Signup</Link> | <Link to="/login">Login</Link> | <Link to="/removed-books">Sold/Bought Books</Link>
-      </nav>
+      {isLoggedIn ? (
+        <PrivateNavbar onLogout={handleLogout} />
+      ) : (
+        <PublicNavbar />
+      )}
+
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/addbook" element={<AddBook />} />
         <Route path="/request/:bookId" element={<RequestBook />} />
         <Route path="/manage-requests" element={<ManageRequests />} />
-        <Route path="/removed-books" element={<ShowRemovedBooks />} />
+        <Route path="/sold-bought-books" element={<ShowRemovedBooks />} />
         <Route path="/updateBook/:bookId" element={<UpdateBook />} />
+        <Route path="/book/:bookId" element={<BookDetail />} />
+        <Route path="/search" element={<SearchResults />} />
       </Routes>
     </>
   );

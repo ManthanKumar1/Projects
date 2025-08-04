@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './css/UpdateBook.css'; // Add this line
 
 const UpdateBook = () => {
   const { bookId } = useParams();
@@ -52,7 +53,7 @@ const UpdateBook = () => {
         formData.append(key, form[key]);
       }
       if (image) {
-        formData.append('image', image); // backend must handle this
+        formData.append('image', image);
       }
 
       const res = await axios.post(
@@ -67,18 +68,18 @@ const UpdateBook = () => {
       );
 
       alert(res.data.message);
-      navigate('/home');
+      navigate('/');
     } catch (err) {
       alert(err.response?.data?.message || 'Failed to update book');
     }
   };
 
   return (
-    <div>
+    <div className="update-book-container">
       <h2>Update Book</h2>
-      {message && <p style={{ color: 'red' }}>{message}</p>}
+      {message && <p className="error-message">{message}</p>}
 
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <form onSubmit={handleSubmit} className="update-book-form">
         <input
           type="text"
           name="title"
@@ -86,7 +87,7 @@ const UpdateBook = () => {
           value={form.title}
           onChange={handleChange}
           required
-        /><br />
+        />
 
         <input
           type="text"
@@ -95,7 +96,7 @@ const UpdateBook = () => {
           value={form.author}
           onChange={handleChange}
           required
-        /><br />
+        />
 
         <select
           name="condition"
@@ -107,7 +108,7 @@ const UpdateBook = () => {
           <option value="Good">Good</option>
           <option value="Moderate">Moderate</option>
           <option value="Bad">Bad</option>
-        </select><br />
+        </select>
 
         <input
           type="number"
@@ -116,7 +117,7 @@ const UpdateBook = () => {
           value={form.originalPrice}
           onChange={handleChange}
           required
-        /><br />
+        />
 
         <input
           type="number"
@@ -125,14 +126,14 @@ const UpdateBook = () => {
           value={form.price}
           onChange={handleChange}
           required
-        /><br />
+        />
 
         <input
           type="file"
           name="image"
           accept="image/*"
           onChange={handleImageChange}
-        /><br />
+        />
 
         <button type="submit">Update Book</button>
       </form>

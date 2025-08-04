@@ -2,7 +2,7 @@ let fs = require("fs")
 let path = require("path")
 let bookModel = require("../models/bookModel")
 let userModel = require("../models/userModel")
-let { isValid, isValidTitle, isValidName, isValidObjectId } = require("../validator/validation")
+let { isValid, isValidObjectId } = require("../validator/validation")
 
 let createBook = async (req, res) => {
     try {
@@ -26,11 +26,11 @@ let createBook = async (req, res) => {
 
         let { title, author, condition, originalPrice, price } = data
 
-        if (!isValid(title) || !isValidTitle.test(title)) {
+        if (!isValid(title)) {
             return res.status(400).send({ status: false, message: "Invalid or missing title" })
         }
 
-        if (!isValid(author) || !isValidName.test(author)) {
+        if (!isValid(author)) {
             return res.status(400).send({ status: false, message: "Invalid or missing author" })
         }
 
@@ -98,7 +98,7 @@ let getBook = async (req, res) => {
             query["requests.user"] = requests
         }
 
-        let books = await bookModel.find(query)
+        let books = await bookModel.find(query).sort({ createdAt: -1 })
             .populate("owner", "username")
             .populate("requests.user", "username")
 
@@ -220,7 +220,7 @@ let showRemove = async (req, res) => {
                 author: book.author,
                 image: book.image,
                 price: book.price,
-                status: isOwner ? "You sold this book" : isBuyer ? "You bought this book" : "Unknown"
+                status: isOwner ? "Sold" : isBuyer ? "Bought" : "Unknown"
             }
         })
 
@@ -338,4 +338,26 @@ let getBookImage = async (req, res) => {
     }
 }
 
-module.exports = { createBook, getBook, requestBook, updateRequestStatus, showRemove, updateBook, deleteBook, getBookImage }
+let searchBook = async (req, res) => {
+    try {
+        let { q } = req.query
+
+        if (!q) {
+            return res.status(400).json({ message: 'Search query is required' })
+        }
+
+        let regex = new RegExp(q, 'i')
+
+        let books = await bookModel.find({
+            isDeleted: false,
+            remove: false,
+            $or: [{ title: regex }, { author: regex }]
+        }).populate('owner')
+
+        res.status(200).json({ data: books })
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message })
+    }
+}
+
+module.exports = { createBook, getBook, requestBook, updateRequestStatus, showRemove, updateBook, deleteBook, getBookImage, searchBook }

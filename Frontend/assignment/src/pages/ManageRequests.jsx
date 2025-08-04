@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import './css/ManageRequests.css'
 
 const ManageRequests = () => {
   const [books, setBooks] = useState([]);
@@ -35,19 +36,19 @@ const ManageRequests = () => {
         }
       );
       alert(res.data.message);
-      window.location.reload(); // reload to reflect status change
+      window.location.reload();
     } catch (err) {
       alert(err.response?.data?.message || 'Failed to update status');
     }
   };
 
   return (
-    <div>
+    <div className="manage-requests-container">
       <h2>Manage Book Requests</h2>
       {msg && <p>{msg}</p>}
 
       {books.map(book => (
-        <div key={book._id} style={{ border: '1px solid #ccc', margin: '20px', padding: '15px' }}>
+        <div key={book._id} className="book-card">
           <h3>{book.title} by {book.author}</h3>
           <p>Price: ₹{book.price}</p>
           <p>Condition: {book.condition}</p>
@@ -55,29 +56,33 @@ const ManageRequests = () => {
 
           {book.requests.length === 0 && <p>No requests yet.</p>}
 
-          <ul>
-            {/* Filter unique user requests by user._id */}
+          <ul className="requests-list">
             {[...new Map(book.requests.map(req => [req.user?._id, req])).values()].map(request => (
-              <li key={request._id} style={{ marginBottom: '10px' }}>
+              <li key={request._id}>
                 <strong>User:</strong> {request.user?.username || 'Unknown'}<br />
                 <strong>Status:</strong>{' '}
-                {request.status === 'accepted'
-                  ? '✅ Accepted'
-                  : request.status === 'declined'
-                  ? '❌ Declined'
-                  : '⏳ Not approved yet'}<br />
+                <span
+                  className={`status-icon ${request.status === 'accepted'
+                      ? 'accepted'
+                      : request.status === 'declined'
+                        ? 'declined'
+                        : 'pending'
+                    }`}
+                >
+                  {request.status === 'accepted'
+                    ? '✅ Accepted'
+                    : request.status === 'declined'
+                      ? '❌ Declined'
+                      : '⏳ Not approved yet'}
+                </span>
+                <br />
 
                 {request.status !== 'accepted' && request.status !== 'declined' && (
                   <>
-                    <button
-                      onClick={() => updateRequest(book._id, request._id, 'accepted')}
-                      style={{ marginRight: '10px' }}
-                    >
+                    <button onClick={() => updateRequest(book._id, request._id, 'accepted')}>
                       Accept
                     </button>
-                    <button
-                      onClick={() => updateRequest(book._id, request._id, 'declined')}
-                    >
+                    <button onClick={() => updateRequest(book._id, request._id, 'declined')}>
                       Decline
                     </button>
                   </>

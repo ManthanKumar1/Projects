@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './css/AddBook.css';
 
 const AddBook = () => {
   const navigate = useNavigate();
@@ -29,12 +30,9 @@ const AddBook = () => {
     e.preventDefault();
 
     const body = new FormData();
-    body.append('title', formData.title);
-    body.append('author', formData.author);
-    body.append('condition', formData.condition);
-    body.append('originalPrice', formData.originalPrice);
-    body.append('price', formData.price);
-
+    for (let key in formData) {
+      body.append(key, formData[key]);
+    }
     for (let i = 0; i < images.length; i++) {
       body.append('image', images[i]);
     }
@@ -42,35 +40,35 @@ const AddBook = () => {
     try {
       const res = await axios.post('https://projects-5epb.onrender.com/createBook', body, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
-        }
+        },
       });
       setMessage(res.data.message);
-      navigate('/home'); // Redirect after success
+      navigate('/');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Failed to create book');
     }
   };
 
   return (
-    <div>
+    <div className="add-book-container">
       <h2>Add Book</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <input type="text" name="title" placeholder="Title" onChange={handleChange} required /><br />
-        <input type="text" name="author" placeholder="Author" onChange={handleChange} required /><br />
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className="add-book-form">
+        <input type="text" name="title" placeholder="Title" onChange={handleChange} required />
+        <input type="text" name="author" placeholder="Author" onChange={handleChange} required />
         <select name="condition" onChange={handleChange} required>
           <option value="">Select Condition</option>
           <option value="Good">Good</option>
           <option value="Moderate">Moderate</option>
           <option value="Bad">Bad</option>
-        </select><br />
-        <input type="text" name="originalPrice" placeholder="Original Price" onChange={handleChange} required /><br />
-        <input type="text" name="price" placeholder="Price" onChange={handleChange} required /><br />
-        <input type="file" name="image" multiple onChange={handleImageChange} accept="image/*" /><br />
+        </select>
+        <input type="text" name="originalPrice" placeholder="Original Price" onChange={handleChange} required />
+        <input type="text" name="price" placeholder="Selling Price" onChange={handleChange} required />
+        <input type="file" name="image" multiple onChange={handleImageChange} accept="image/*" />
         <button type="submit">Add Book</button>
       </form>
-      <p>{message}</p>
+      {message && <p className="add-book-message">{message}</p>}
     </div>
   );
 };

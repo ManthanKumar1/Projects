@@ -1,7 +1,7 @@
 let userModel = require('../models/userModel')
 let jwt = require('jsonwebtoken')
 let bcrypt = require('bcryptjs')
-let { isValid, isValidName, isValidMail } = require('../validator/validation')
+let { isValid, isValidMail } = require('../validator/validation')
 
 let signup = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ let signup = async (req, res) => {
 
         let { username, email, password } = data
         console.log(data)
-        if (!isValid(username) || !isValidName.test(username)) {
+        if (!isValid(username)) {
             return res.status(400).send({ status: false, message: "Username is missing or invalid" })
         }
 

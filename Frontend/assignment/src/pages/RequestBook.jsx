@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './css/RequestBook.css'
 
 const RequestBook = () => {
-  const { bookId } = useParams(); // bookId from URL
+  const { bookId } = useParams();
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
@@ -21,8 +22,8 @@ const RequestBook = () => {
           }
         );
         setMessage(res.data.message);
-        // Redirect to home after 2 seconds
-        setTimeout(() => navigate('/home'), 2000);
+
+        setTimeout(() => navigate('/'), 2000);
       } catch (err) {
         setMessage(err.response?.data?.message || 'Something went wrong');
       }
@@ -36,7 +37,7 @@ const RequestBook = () => {
   }, [bookId, token, navigate]);
 
   return (
-    <div>
+    <div className="request-book-container">
       <h2>Requesting Book...</h2>
       <p>{message}</p>
     </div>

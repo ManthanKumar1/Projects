@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './css/Signup.css'; // Create this CSS file
 
-const Signup = () => {
+const Signup = ({ onLogin }) => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -17,25 +18,41 @@ const Signup = () => {
       const res = await axios.post('https://projects-5epb.onrender.com/signup', formData);
       setMessage(res.data.message);
       sessionStorage.setItem('token', res.data.data.token);
-      navigate('/home'); // redirect to home
+      onLogin();
+      navigate('/');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Signup failed');
     }
   };
 
   return (
-    <div>
+    <div className="auth-form-container">
       <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-        <br />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <br />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <br />
+      <form onSubmit={handleSubmit} className="auth-form">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Signup</button>
       </form>
-      <p>{message}</p>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 };
