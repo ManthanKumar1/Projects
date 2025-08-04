@@ -53,7 +53,7 @@ let createBook = async (req, res) => {
                 let fileName = Date.now() + "-" + img.originalname.replace(/\s+/g, "_")
                 let uploadPath = path.join(__dirname, "../../uploads", fileName)
                 fs.writeFileSync(uploadPath, img.buffer)
-                imagePaths.push(`http://localhost:3000/uploads/${fileName}`)
+                imagePaths.push(`https://projects-5epb.onrender.com/uploads/${fileName}`)
             }
         }
 
@@ -236,6 +236,7 @@ let updateBook = async (req, res) => {
         let { bookId } = req.query
         let userId = req.user.id
         let updateData = req.body
+        let images = req.files
 
         let allowedFields = ['title', 'author', 'condition', 'originalPrice', 'price', 'image']
 
@@ -258,6 +259,16 @@ let updateBook = async (req, res) => {
             }
             if (key === 'condition' && !["Good", "Bad", "Moderate"].includes(updateData[key])) {
                 return res.status(400).send({ status: false, message: "Invalid condition" })
+            }
+        }
+
+        let imagePaths = []
+        if (images && images.length > 0) {
+            for (let img of images) {
+                let fileName = Date.now() + "-" + img.originalname.replace(/\s+/g, "_")
+                let uploadPath = path.join(__dirname, "../../uploads", fileName)
+                fs.writeFileSync(uploadPath, img.buffer)
+                imagePaths.push(`https://projects-5epb.onrender.com/uploads/${fileName}`)
             }
         }
 

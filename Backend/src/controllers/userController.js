@@ -3,7 +3,7 @@ let jwt = require('jsonwebtoken')
 let bcrypt = require('bcryptjs')
 let { isValid, isValidName, isValidMail } = require('../validator/validation')
 
-let signup = async function (req, res) {
+let signup = async (req, res) => {
     try {
         let data = req.body
         if (Object.keys(data).length === 0) {
@@ -55,7 +55,7 @@ let signup = async function (req, res) {
     }
 }
 
-let login = async function (req, res) {
+let login = async (req, res) => {
     try {
         console.log(req.body)
         let data = req.body

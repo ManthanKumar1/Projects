@@ -6,6 +6,7 @@ import AddBook from './pages/AddBook';
 import RequestBook from './pages/RequestBook';
 import ManageRequests from './pages/ManageRequests';
 import ShowRemovedBooks from './pages/ShowRemovedBooks';
+import UpdateBook from './pages/UpdateBook';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/request/:bookId" element={<RequestBook />} />
         <Route path="/manage-requests" element={<ManageRequests />} />
         <Route path="/removed-books" element={<ShowRemovedBooks />} />
+        <Route path="/updateBook/:bookId" element={<UpdateBook />} />
       </Routes>
     </>
   );

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [msg, setMsg] = useState('');
   const [currentUserId, setCurrentUserId] = useState('');
+  const token = sessionStorage.getItem('token');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
     if (token) {
       const payload = JSON.parse(atob(token.split('.')[1]));
       setCurrentUserId(payload.id);
@@ -22,12 +23,24 @@ const Home = () => {
         setMsg(error.response?.data?.message || 'Failed to fetch books');
       }
     };
-    fetchBooks();
-  }, []);
 
-  const canRequestAgain = (requests) => {
-    const userRequest = requests?.find(req => req.user?._id === currentUserId);
-    return userRequest?.status === 'declined';
+    fetchBooks();
+  }, [token]);
+
+  const deleteBook = async (bookId) => {
+    try {
+      await axios.post(
+        `https://projects-5epb.onrender.com/deleteBook?bookId=${bookId}`,
+        {}, // Empty body
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      alert("Book deleted successfully");
+      setBooks(books.filter(book => book._id !== bookId));
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to delete book");
+    }
   };
 
   return (
@@ -46,7 +59,7 @@ const Home = () => {
 
               {!isOwner && (
                 <>
-                  {(!userRequest || userRequest?.status === 'declined') && (
+                  {(!userRequest || userRequest.status === 'declined') && (
                     <Link to={`/request/${book._id}`}>
                       <button>{userRequest ? 'Re-request' : 'Buy'}</button>
                     </Link>
@@ -63,7 +76,17 @@ const Home = () => {
                 </>
               )}
 
-              {isOwner && <span style={{ color: 'gray' }}>Your Book</span>}
+              {isOwner && (
+                <>
+                  <span style={{ color: 'gray' }}>Your Book</span><br />
+                  <button onClick={() => navigate(`/updateBook/${book._id}`)} style={{ marginRight: '10px' }}>
+                    Update
+                  </button>
+                  <button onClick={() => deleteBook(book._id)} style={{ color: 'red' }}>
+                    Delete
+                  </button>
+                </>
+              )}
             </li>
           );
         })}
