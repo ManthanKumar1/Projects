@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors({
   origin: [
     'http://localhost:5173',
+    'https://projects-woad-rho.vercel.app',
     'https://book-swap-marketplace.netlify.app'
   ],
   credentials: true,
